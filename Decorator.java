@@ -13,10 +13,6 @@ public abstract class BasePizza{
 
 public class Margarita extends BasePizza{
   
-  Margarita(){
-    
-  }
-  
   int getCost(){
     return 5;
   }
@@ -24,21 +20,23 @@ public class Margarita extends BasePizza{
 }
 
 public abstract class PizzaDecorator extends BasePizza{
+
+    protected BasePizza basePizza;
+
+    public PizzaDecorator(BasePizza basePizza) {
+        this.basePizza = basePizza;
+    }
    
 }
 
 public class Olive extends PizzaDecorator{
-  BasePizza basePizza;
-  
-  Olive(BasePizza basePizza){
-    this.basePizza=basePizza;
-    return ;
-  }
-  
-  int getCost(){
-    return basePizza.getCost()+10;
-  }
-  
+  public Olive(BasePizza basePizza) {
+        super(basePizza);
+    }
+
+    public int getCost() {
+        return basePizza.getCost() + 10;
+    }
 }
 
 
